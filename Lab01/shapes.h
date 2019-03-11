@@ -14,8 +14,16 @@ float fixXCoordinate(int x) {
     return static_cast<float>(x) - 3.0f;
 }
 
+float fixXCoordinate(float x) {
+    return x - 3.0f;
+}
+
 float fixYCoordinate(int y) {
     return static_cast<float>(y) - 60.0f;
+}
+
+float fixYCoordinate(float y) {
+    return y - 60.0f;
 }
 
 sf::CircleShape *createCircle(float x, float y, sf::Color drawingColor) {
@@ -49,43 +57,40 @@ sf::VertexArray *createLine(float x, float y, sf::Color drawingColor) {
 }
 
 inline float countDistance(float x, float y, float x2, float y2) {
-    float distX = x2 - x;
-    float distY = y2 - y;
+    float distX = x - x2;
+    float distY = y - y2;
     return sqrt((distX * distX) + (distY * distY));
 }
 
 void updateDrawingCircle(sf::CircleShape *circle, float x, float y) {
-    sf::Vector2f pos = circle->getPosition();
+    auto pos = circle->getPosition();
 
-    auto radius = countDistance(pos.x, pos.y, x, y) / 2;
+    static auto X = x;
+    static auto Y = y;
 
-    if (x > 700 && pos.x + 2 * radius > 794.0f) {
-        radius = (792.0f - pos.x) / 2.0f;
-    }
-
-    if (x < 100 && pos.x - 2 * radius < 2.0f) {
-        radius = (pos.x - 2.0f) / 2.0f;
-    }
-
-    if (y > 450 && pos.y + 2 * radius > 534.0f) {
-        radius = (532.0f - pos.y) / 2.0f;
-    }
-
-    if (y < 100 && pos.y - 2 * radius < 2.0f) {
-        radius = (pos.y - 2.0f) / 2.0f;
-    }
-
-    if (pos.x - x > 0 || pos.y - y > 0) {
-        radius *= -1.0f;
-    }
-
-    circle->setRadius(radius);
+    auto radius = countDistance(pos.x, pos.y, x, y) / 2.5f;
 
 #ifdef DEBUG
-    std::cout << "x: " << pos.x << " y: " << pos.y << " r: " << radius << std::endl;
-    std::cout << "Max-Left: " << pos.x - radius << " Max-Right: " << pos.x + radius << std::endl;
-    std::cout << "Max-Up: " << pos.y - 63.0f - radius << " Max-Bottom: " << pos.y + 63.0f + radius << std::endl;
+    std::cout << pos.x + 2 * radius << std::endl;
+    std::cout << pos.x - 2 * radius << std::endl;
+    std::cout << pos.y + 2 * radius << std::endl;
+    std::cout << pos.y - 2 * radius << std::endl;
 #endif
+
+    auto angle = -static_cast<float>(
+            std::atan2(Y - pos.y, X - pos.x) - std::atan2(y - pos.y, x - pos.x) * 180 / M_PI + 45
+    );
+
+    if ((x > pos.x && pos.x + 2 * radius > 740.0f) || (x < pos.x && pos.x - 2 * radius < 2.0f) ||
+        (y > pos.y && pos.y + 2 * radius > 580.0f)) {
+        return;
+    }
+
+    circle->setRotation(angle);
+    circle->setRadius(radius);
+
+    X = x;
+    Y = y;
 }
 
 void updateDrawingRect(sf::RectangleShape *rect, float x, float y) {

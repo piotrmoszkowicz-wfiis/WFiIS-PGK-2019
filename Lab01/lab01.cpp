@@ -1,5 +1,3 @@
-// Calosc mozna dowolnie edytowac wedle uznania. 
-
 #include <SFML/Window.hpp>
 #include <SFML/Graphics.hpp>
 
@@ -11,5 +9,8 @@ int main() {
     while (window->isOpen()) {
         window->render();
     }
+
+    delete window;
+
     return 0;
 }

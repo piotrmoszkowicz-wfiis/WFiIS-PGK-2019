@@ -198,19 +198,8 @@ private:
 #ifdef DEBUG
         std::cout << "Moved mouse -> x:" << e.mouseMove.x << " y: " << e.mouseMove.y << std::endl;
 #endif
-        if (e.mouseMove.y < 62) {
-            e.mouseMove.y = 62;
-        }
-        if (e.mouseMove.y > 592) {
-            e.mouseMove.y = 592;
-        }
-
-        if (e.mouseMove.x < 4) {
-            e.mouseMove.x = 4;
-        }
-
-        if (e.mouseMove.x > 794) {
-            e.mouseMove.x = 794;
+        if (e.mouseMove.y < 62 || e.mouseMove.y > 592 || e.mouseMove.x < 4 || e.mouseMove.x > 794) {
+            return;
         }
 
         auto x = fixXCoordinate(e.mouseMove.x);
@@ -244,20 +233,8 @@ private:
                   << e.mouseButton.y << std::endl;
 #endif
         if (m_isDrawing) {
-            if (e.mouseButton.y < 62) {
-                e.mouseButton.y = 62;
-            }
-
-            if (e.mouseButton.y > 592) {
-                e.mouseButton.y = 592;
-            }
-
-            if (e.mouseButton.x < 4) {
-                e.mouseButton.x = 4;
-            }
-
-            if (e.mouseButton.x > 794) {
-                e.mouseButton.x = 794;
+            if (e.mouseButton.y < 62 || e.mouseButton.y > 592 || e.mouseButton.x < 4 || e.mouseButton.x > 794) {
+                return;
             }
 
             auto x = fixXCoordinate(e.mouseButton.x);

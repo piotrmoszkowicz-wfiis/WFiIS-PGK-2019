@@ -91,6 +91,16 @@ public:
         rectangle_filling_color->setPosition(768.0f, 31.0f);
     }
 
+    ~Menu() override {
+        delete text;
+        delete rectangle;
+        delete colors_pixels;
+        delete colors_texture;
+        delete colors_sprite;
+        delete rectangle_drawing_color;
+        delete rectangle_filling_color;
+    }
+
     void outtextxy(sf::RenderTarget &target, float x, float y, wchar_t *str) const {
         text->setPosition(x, y);
         text->setString(str);
@@ -121,19 +131,19 @@ public:
 
     void draw(sf::RenderTarget &target, sf::RenderStates states) const override {
         std::string s = "a";
-        outtextxy(target, 5, 600, L"f - wybór koloru rysowania");
-        outtextxy(target, 5, 615, L"b - wybór koloru wypełniania");
-        outtextxy(target, 5, 630, L"l - rysowanie linii");
+        outtextxy(target, 5, 600, const_cast<wchar_t*>(L"f - wybór koloru rysowania"));
+        outtextxy(target, 5, 615, const_cast<wchar_t*>(L"b - wybór koloru wypełniania"));
+        outtextxy(target, 5, 630, const_cast<wchar_t*>(L"l - rysowanie linii"));
 
-        outtextxy(target, 200, 600, L"r - rysowanie prostokąta");
-        outtextxy(target, 200, 615, L"a - rysowanie wypełnionego prostokąta");
-        outtextxy(target, 200, 630, L"c - rysowanie okręgu");
+        outtextxy(target, 200, 600, const_cast<wchar_t *>(L"r - rysowanie prostokąta"));
+        outtextxy(target, 200, 615, const_cast<wchar_t *>(L"a - rysowanie wypełnionego prostokąta"));
+        outtextxy(target, 200, 630, const_cast<wchar_t *>(L"c - rysowanie okręgu"));
 
-        outtextxy(target, 470, 600, L"w - zapis do pliku");
-        outtextxy(target, 470, 615, L"o - odczyt z pliku");
-        outtextxy(target, 470, 630, L"esc - wyjście");
+        outtextxy(target, 470, 600, const_cast<wchar_t *>(L"w - zapis do pliku"));
+        outtextxy(target, 470, 615, const_cast<wchar_t *>(L"o - odczyt z pliku"));
+        outtextxy(target, 470, 630, const_cast<wchar_t *>(L"esc - wyjście"));
 
-        outtextxy(target, 650, 615, L"Aktualne:");
+        outtextxy(target, 650, 615, const_cast<wchar_t *>(L"Aktualne:"));
 
         outcharxy(target, 720, 615, state_char);
 
