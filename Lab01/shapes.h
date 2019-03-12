@@ -81,11 +81,6 @@ void updateDrawingCircle(sf::CircleShape *circle, float x, float y) {
             std::atan2(Y - pos.y, X - pos.x) - std::atan2(y - pos.y, x - pos.x) * 180 / M_PI + 45
     );
 
-    if ((x > pos.x && pos.x + 2 * radius > 740.0f) || (x < pos.x && pos.x - 2 * radius < 2.0f) ||
-        (y > pos.y && pos.y + 2 * radius > 580.0f)) {
-        return;
-    }
-
     circle->setRotation(angle);
     circle->setRadius(radius);
 
