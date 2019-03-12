@@ -14,16 +14,8 @@ float fixXCoordinate(int x) {
     return static_cast<float>(x) - 3.0f;
 }
 
-float fixXCoordinate(float x) {
-    return x - 3.0f;
-}
-
 float fixYCoordinate(int y) {
     return static_cast<float>(y) - 60.0f;
-}
-
-float fixYCoordinate(float y) {
-    return y - 60.0f;
 }
 
 sf::CircleShape *createCircle(float x, float y, sf::Color drawingColor) {
