@@ -118,7 +118,9 @@ private:
                 }
             }
             if ((e.mouseButton.x > 2 && e.mouseButton.x < 798) && (e.mouseButton.y > 62 && e.mouseButton.y < 598)) {
+#ifdef DEBUG
                 std::cout << "x: " << e.mouseButton.x << " y: " << e.mouseButton.y << std::endl;
+#endif
 
                 auto x = fixXCoordinate(e.mouseButton.x);
                 auto y = fixYCoordinate(e.mouseButton.y);
