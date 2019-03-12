@@ -39,12 +39,14 @@ createRect(float x, float y, sf::Color drawingColor, sf::Color fillingColor = sf
     return rect;
 }
 
-sf::VertexArray *createLine(float x, float y, sf::Color drawingColor) {
+sf::VertexArray *createLine(float x, float y, sf::Color drawingColor, sf::Color fillingColor) {
     auto line = new sf::VertexArray(sf::Lines, 2);
     (*line)[0].position = sf::Vector2f(x, y);
     (*line)[0].color = drawingColor;
     (*line)[1].position = sf::Vector2f(x, y);
-    (*line)[1].color = drawingColor;
+    if (fillingColor != sf::Color::Transparent) {
+        (*line)[1].color = fillingColor;
+    }
     return line;
 }
 

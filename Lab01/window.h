@@ -134,7 +134,7 @@ private:
                                                       m_windowMenu.filling_color);
                         break;
                     case AppState::DrawLine:
-                        m_currentlyDrawn = createLine(x, y, m_windowMenu.drawing_color);
+                        m_currentlyDrawn = createLine(x, y, m_windowMenu.drawing_color, m_windowMenu.filling_color);
                         break;
                     case AppState::DrawRect:
                         m_currentlyDrawn = createRect(x, y, m_windowMenu.drawing_color);
