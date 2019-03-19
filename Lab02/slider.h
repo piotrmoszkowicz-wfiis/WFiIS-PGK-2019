@@ -23,9 +23,9 @@ public:
 
         for (int i = 0; i < 250; i++) {
             for (int j = 0; j < 250; j++) {
-                c.R = j;
-                c.G = j;
-                c.B = j;
+                c.R = static_cast<float>(j);
+                c.G = static_cast<float>(j);
+                c.B = static_cast<float>(j);
                 draw_to_color_pixels(i, j, c, m_pixels);
             }
         }

@@ -113,7 +113,7 @@ private:
 
     void handleMouseMove(sf::Event &e) {
         if (m_buttonHold && this->isMouseOnBar(e.mouseMove.x, e.mouseMove.y)) {
-            float newL = m_slider.updatePos(e.mouseMove.y);
+            float newL = m_slider.updatePos(static_cast<float>(e.mouseMove.y));
 
             if (newL > 1.0f) {
                 newL = 1.0f;
@@ -128,7 +128,7 @@ private:
 
     void handleMousePressed(sf::Event &e) {
         if (e.mouseButton.button == 0 && this->isMouseOnBar(e.mouseButton.x, e.mouseButton.y)) {
-            float newL = m_slider.updatePos(e.mouseButton.y);
+            float newL = m_slider.updatePos(static_cast<float>(e.mouseButton.y));
 
             if (newL > 1.0f) {
                 newL = 1.0f;
