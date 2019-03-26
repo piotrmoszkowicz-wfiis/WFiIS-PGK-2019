@@ -1,13 +1,15 @@
+//
+// Created by Piotr Moszkowicz on 2019-03-26.
+//
 #include "main.h"
+#include "frame.h"
 
 IMPLEMENT_APP(HelloWorldApp)
 
 // This is executed upon startup, like 'main()' in non-wxWidgets programs.
 bool HelloWorldApp::OnInit()
 {
-    wxFrame *frame = new wxFrame((wxFrame*) NULL, -1, _T("Hello wxWidgets World"));
-    frame->CreateStatusBar();
-    frame->SetStatusText(_T("Hello World"));
+    wxFrame *frame = new MyFrame1((wxFrame*) NULL);
     frame->Show(true);
     SetTopWindow(frame);
     return true;

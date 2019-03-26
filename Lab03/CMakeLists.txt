@@ -8,7 +8,7 @@ include_directories(/usr/local/Cellar/wxmac/3.0.4_1/lib/wx/include/osx_cocoa-uni
 include_directories(/usr/local/Cellar/wxmac/3.0.4_1/include/wx-3.0)
 
 add_definitions(-I/usr/local/lib/wx/include/osx_cocoa-unicode-3.0 -I/usr/local/include/wx-3.0 -D_FILE_OFFSET_BITS=64 -DWXUSINGDLL -D__WXMAC__ -D__WXOSX__ -D__WXOSX_COCOA__)
-add_executable(Lab03 main.cpp main.h)
+add_executable(Lab03 main.cpp main.h frame.h frame.cpp)
 target_link_libraries(Lab03 ${wxWidgets_LIBRARIES})
 
-#configure_file(${PROJECT_SOURCE_DIR}/assets/banan.png assets/banan.png COPYONLY)
+configure_file(${PROJECT_SOURCE_DIR}/assets/banan.png assets/banan.png COPYONLY)
