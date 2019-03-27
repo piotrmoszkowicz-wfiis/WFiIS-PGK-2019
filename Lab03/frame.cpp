@@ -34,29 +34,21 @@ MyFrame1::MyFrame1(wxWindow *parent, wxWindowID id, const wxString &title, const
     m_starColour = new wxColour(*wxBLACK);
 
     wxBoxSizer *bSizer3;
-    bSizer3 = new wxBoxSizer(wxVERTICAL);
+    bSizer3 = new wxBoxSizer(wxHORIZONTAL);
 
     bSizer3->SetMinSize(wxSize(700, -1));
-    wxGridSizer *gSizer2;
-    gSizer2 = new wxGridSizer(1, 2, 0, 0);
 
-    wxBoxSizer *bSizer2;
-    bSizer2 = new wxBoxSizer(wxVERTICAL);
-
-    bSizer2->SetMinSize(wxSize(500, -1));
-    m_panel1 = new wxPanel(this, wxID_ANY, wxDefaultPosition, wxSize(500, -1), wxTAB_TRAVERSAL);
+    m_panel1 = new wxPanel(this, wxID_ANY, wxDefaultPosition, wxSize(-1, -1), wxTAB_TRAVERSAL);
     m_panel1->SetBackgroundColour(wxColour(255, 255, 255));
     m_panel1->SetMinSize(wxSize(500, 410));
 
-    bSizer2->Add(m_panel1, 0, wxALL | wxEXPAND, 5);
-
-
-    gSizer2->Add(bSizer2, 1, wxALIGN_CENTER_VERTICAL, 5);
+    bSizer3->Add( m_panel1, 500, wxEXPAND | wxALL, 5 );
 
     wxBoxSizer *bSizer1;
     bSizer1 = new wxBoxSizer(wxVERTICAL);
 
     bSizer1->SetMinSize(wxSize(180, -1));
+
     m_button7 = new wxButton(this, wxID_ANY, wxT("Zapis do pliku"), wxPoint(-1, -1), wxDefaultSize, 0);
     bSizer1->Add(m_button7, 0, wxALIGN_CENTER | wxALL, 5);
 
@@ -93,11 +85,7 @@ MyFrame1::MyFrame1(wxWindow *parent, wxWindowID id, const wxString &title, const
     m_choice1->SetSelection(0);
     bSizer1->Add(m_choice1, 0, wxALIGN_CENTER | wxALL, 5);
 
-
-    gSizer2->Add(bSizer1, 1, wxALIGN_RIGHT, 5);
-
-
-    bSizer3->Add(gSizer2, 1, wxEXPAND | wxTOP, 5);
+    bSizer3->Add(bSizer1, 1, wxFIXED_MINSIZE | wxALIGN_RIGHT | wxTOP, 5);
 
 
     this->SetSizer(bSizer3);
