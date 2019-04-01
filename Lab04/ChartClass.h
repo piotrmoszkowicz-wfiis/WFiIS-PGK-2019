@@ -17,7 +17,7 @@ class ChartClass
         inline Matrix getRotationMatrix(int w, int h);
         inline Matrix getScaleMatrix(int w, int h);
         inline Matrix getTranslationMatrix();
-        inline void drawRotatedText(wxDC* dc, Matrix transformMatrix, wxString text, double x, double y);
+        inline void drawRotatedText(wxDC* dc, Matrix transformMatrix, wxString text, double x, double y, int h);
         void drawChartAxis(wxDC* dc, Matrix transformMatrix, int w, int h);
         void line2d(wxDC* dc, Matrix t,double x1,double y1,double x2,double y2, int w, int h);
        
