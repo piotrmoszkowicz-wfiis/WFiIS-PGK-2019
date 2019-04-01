@@ -190,7 +190,7 @@ MyFrame1::MyFrame1( wxWindow* parent, wxWindowID id, const wxString& title, cons
 	bSizer2->Add( bSizer9, 1, wxALIGN_CENTER|wxALL, 5 );
 	
 	
-	bSizer1->Add( bSizer2, 0, wxALIGN_RIGHT, 5 );
+	bSizer1->Add( bSizer2, 0, wxALIGN_CENTER, 5 );
 	
 	
 	this->SetSizer( bSizer1 );
